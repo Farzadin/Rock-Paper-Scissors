@@ -68,7 +68,8 @@ function game() {
     playRound();
   }
 
-  return finalResult();
+  console.log(finalResult());
+  resetGame();
 }
 
 // function finalResult would declare the winner or loser and return message
@@ -84,7 +85,7 @@ function finalResult() {
 }
 
 // Function playAgain would reset the Score on both sides
-function playAgain() {
+function resetGame() {
   playerScore = 0;
   computerScore = 0;
 }
