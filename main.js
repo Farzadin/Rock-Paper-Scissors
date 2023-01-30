@@ -1,91 +1,57 @@
 let playerScore = 0;
 let computerScore = 0;
+let playerSelection = "";
+let computerSelection = "";
 
 // function getComputerChoice randomly pick value form Array "choices" and
 // return it.
 function getComputerChoice() {
-  const choices = ["Rock", "Paper", "Scissors"];
+  const choices = ["rock", "paper", "scissors"];
   return choices[Math.floor(Math.random() * 3)];
 }
 
-// Function PlayRound simulate one round of rock paper scissors.
-function playRound(playerSelection, computerSelection) {
-  playerSelection = prompt("Rock, Paper or Scissors? ");
+function playRound(e) {
+  // player's selection
+  if (e.target.outerText == "Rock") {
+    playerSelection = "rock";
+  } else if (e.target.outerText == "Paper") {
+    playerSelection = "paper";
+  } else if (e.target.outerText == "Scissors") {
+    playerSelection = "scissors";
+  }
+
+  // computer's selection
   computerSelection = getComputerChoice();
 
-  if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-    console.log(`Draw ${playerScore}-${computerScore}`);
+  // conditions of game
+  if (playerSelection === computerSelection) {
+    result.textContent = `Draw ${playerScore}-${computerScore}`;
   }
 
-  if (
-    playerSelection.toLowerCase() === "rock" &&
-    computerSelection.toLowerCase() === "paper"
-  ) {
+  if (playerSelection === "rock" && computerSelection === "paper") {
     computerScore += 1;
-    console.log(`You Lost, Paper beats Rock , ${playerScore}-${computerScore}`);
-  } else if (
-    playerSelection.toLowerCase() === "rock" &&
-    computerSelection.toLowerCase() === "scissors"
-  ) {
+    result.textContent = `You Lost, Paper beats Rock , ${playerScore}-${computerScore}`;
+  } else if (playerSelection === "rock" && computerSelection === "scissors") {
     playerScore += 1;
-    console.log(
-      `You Won, Rock beats Scissors, ${playerScore}-${computerScore}`
-    );
-  } else if (
-    playerSelection.toLowerCase() === "paper" &&
-    computerSelection.toLowerCase() === "rock"
-  ) {
+    result.textContent = `You Won, Rock beats Scissors, ${playerScore}-${computerScore}`;
+  } else if (playerSelection === "paper" && computerSelection === "rock") {
     playerScore += 1;
-    console.log(`You Won, Paper beats Rock, ${playerScore}-${computerScore}`);
-  } else if (
-    playerSelection.toLowerCase() === "paper" &&
-    computerSelection.toLowerCase() === "scissors"
-  ) {
+    result.textContent = `You Won, Paper beats Rock, ${playerScore}-${computerScore}`;
+  } else if (playerSelection === "paper" && computerSelection === "scissors") {
     computerScore += 1;
-    console.log(
-      `You Lost,Scissors beats Paper,${playerScore}-${computerScore}`
-    );
-  } else if (
-    playerSelection.toLowerCase() === "scissors" &&
-    computerSelection.toLowerCase() === "rock"
-  ) {
+    result.textContent = `You Lost, Scissors beats Paper, ${playerScore}-${computerScore}`;
+  } else if (playerSelection === "scissors" && computerSelection === "rock") {
     computerScore += 1;
-    console.log(`You Lost,Rock beats Scissors,${playerScore}-${computerScore}`);
-  } else if (
-    playerSelection.toLowerCase() === "scissors" &&
-    computerSelection.toLowerCase() === "paper"
-  ) {
+    result.textContent = `You Lost, Rock beats Scissors, ${playerScore}-${computerScore}`;
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
     playerScore += 1;
-    console.log(
-      `You Won, Scissors beats Paper, ${playerScore}-${computerScore}`
-    );
+    result.textContent = `You Won, Scissors beats Paper, ${playerScore}-${computerScore}`;
   }
 }
 
-// function game() would iterate the playRound function 5 times
-function game() {
-  for (let i = 0; i < 5; i++) {
-    playRound();
-  }
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+  button.addEventListener("click", playRound);
+});
 
-  console.log(finalResult());
-  resetGame();
-}
-
-// function finalResult would declare the winner or loser and return message
-// base on that
-function finalResult() {
-  if (playerScore == computerScore) {
-    return "Draw!";
-  } else if (playerScore > computerScore) {
-    return "Winner, Winner chicken dinner!";
-  } else {
-    return "Game Over!";
-  }
-}
-
-// Function playAgain would reset the Score on both sides
-function resetGame() {
-  playerScore = 0;
-  computerScore = 0;
-}
+const result = document.querySelector(".result");
