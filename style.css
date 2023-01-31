@@ -8,6 +8,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
+  height: auto;
 }
 
 header {
@@ -30,6 +32,7 @@ main {
   gap: 50px;
   font-weight: 600;
   margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
 footer {
@@ -80,7 +83,7 @@ footer {
 }
 
 .score {
-  font-size: 34px;
+  font-size: 18px;
 }
 
 .result {
@@ -88,5 +91,17 @@ footer {
 }
 
 .best5 {
-  font-size: 30px;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+  body {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    width: 40%;
+  }
 }
