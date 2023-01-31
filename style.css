@@ -8,8 +8,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
-  height: auto;
 }
 
 header {
@@ -32,7 +30,6 @@ main {
   gap: 50px;
   font-weight: 600;
   margin-bottom: 40px;
-  flex-wrap: wrap;
 }
 
 footer {
