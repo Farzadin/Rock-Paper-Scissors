@@ -16,7 +16,7 @@ function playRound(e) {
     playerSelection = "rock";
   } else if (e.target.outerText == "✋ Paper") {
     playerSelection = "paper";
-  } else if (e.target.outerText == "✋ Paper") {
+  } else if (e.target.outerText == "✌ Scissors") {
     playerSelection = "scissors";
   }
 
